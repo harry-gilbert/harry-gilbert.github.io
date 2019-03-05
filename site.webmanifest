@@ -1,0 +1,20 @@
+{
+    "name": "Harry Gilbert",
+    "short_name": "Harry Gilbert",
+    "icons": [
+        {
+            "src": "android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#2e3043",
+    "background_color": "#2e3043",
+    "start_url": "https://my.tech.dmu.ac.uk/~P15195338/TECH3015/Coursework2/",
+    "display": "standalone"
+}
