@@ -196,11 +196,40 @@ a {
 
 #hg-header::before {
     content: "";
-    position: absolute; /* needed for webkit */
+    position: relative; /* needed for webkit */
     animation: typeHG 10s linear .5s 1 normal forwards;
+    -webkit-animation: webKittypeHG 10s linear .5s 1 normal forwards;
 }
 
 @keyframes typeHG {
+    0% {content: "h";}
+    1% {content: "ha";}
+    2% {content: "har";}
+    3% {content: "harr";}
+    4% {content: "harry";}
+    5% {content: "harry ";}
+    6% {content: "harry p";}
+    7% {content: "harry po";}
+    8% {content: "harry pot";}
+    9% {content: "harry pott";}
+    10% {content: "harry pott";}
+    11% {content: "harry pott";}
+    12% {content: "harry pott";}
+    13% {content: "harry pot";}
+    14% {content: "harry po";}
+    15% {content: "harry p";}
+    16% {content: "harry ";}
+    17% {content: "harry g";}
+    18% {content: "harry gi";}
+    19% {content: "harry gil";}
+    20% {content: "harry gilb";}
+    21% {content: "harry gilbe";}
+    22% {content: "harry gilber";}
+    23% {content: "harry gilbert";}
+    100% {content: "harry gilbert";}
+}
+
+@-webkit-keyframes webKittypeHG {
     0% {content: "h";}
     1% {content: "ha";}
     2% {content: "har";}
