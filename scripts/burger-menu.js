@@ -70,7 +70,6 @@ const toggleDM = () => {
 }
 
 let currentMode = localStorage.getItem("currentMode");
-console.log(currentMode);
 if ( currentMode == "lm" ) {
     toggleDM();
 }
