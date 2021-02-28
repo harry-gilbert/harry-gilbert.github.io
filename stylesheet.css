@@ -194,40 +194,6 @@ a {
     100% {opacity: 0;}
 }
 
-#hg-header::before {
-    content: "";
-    position: relative; /* needed for webkit */
-    animation: typeHG 10s linear .5s 1 normal forwards;
-}
-
-@keyframes typeHG {
-    0% {content: "h";}
-    1% {content: "ha";}
-    2% {content: "har";}
-    3% {content: "harr";}
-    4% {content: "harry";}
-    5% {content: "harry ";}
-    6% {content: "harry p";}
-    7% {content: "harry po";}
-    8% {content: "harry pot";}
-    9% {content: "harry pott";}
-    10% {content: "harry pott";}
-    11% {content: "harry pott";}
-    12% {content: "harry pott";}
-    13% {content: "harry pot";}
-    14% {content: "harry po";}
-    15% {content: "harry p";}
-    16% {content: "harry ";}
-    17% {content: "harry g";}
-    18% {content: "harry gi";}
-    19% {content: "harry gil";}
-    20% {content: "harry gilb";}
-    21% {content: "harry gilbe";}
-    22% {content: "harry gilber";}
-    23% {content: "harry gilbert";}
-    100% {content: "harry gilbert";}
-}
-
 footer {
     font-size: 0.7rem;
     width: 100%;
@@ -249,26 +215,6 @@ footer {
 
 .info-page-cont p, .info-page-cont li {
     font-family: Arial, Helvetica, sans-serif;
-}
-
-#exp-header::before {
-    content: "";
-    position: relative; /* needed for webkit */
-    animation: typeEXP 10s linear .5s 1 normal forwards;
-}
-
-@keyframes typeEXP {
-    1% {content: "e";}
-    2% {content: "ex";}
-    3% {content: "exp";}
-    4% {content: "expe";}
-    5% {content: "exper";}
-    6% {content: "experi";}
-    7% {content: "experie";}
-    8% {content: "experien";}
-    9% {content: "experienc";}
-    10% {content: "experience";}
-    100% {content: "experience";}
 }
 
 .exp-item {
@@ -347,26 +293,6 @@ footer {
 }
 
 
-
-#who-header::before {
-    content: "";
-    position: relative; /* needed for webkit */
-    animation: typeWHO 10s linear .5s 1 normal forwards;
-}
-
-@keyframes typeWHO {
-    1% {content: "w";}
-    2% {content: "wh";}
-    3% {content: "who";}
-    4% {content: "who ";}
-    5% {content: "who a";}
-    6% {content: "who am";}
-    7% {content: "who am ";}
-    8% {content: "who am i";}
-    9% {content: "who am i?";}
-    100% {content: "who am i?";}
-}
-
 .who-cont p {
     margin: 10px 0;
 }
@@ -384,29 +310,6 @@ p.p-before-ul {
 }
 
 
-
-#contact-header::before {
-    content: "";
-    position: relative; /* needed for webkit */
-    animation: typeCON 10s linear .5s 1 normal forwards;
-}
-
-@keyframes typeCON {
-    1% {content: "g";}
-    2% {content: "ge";}
-    3% {content: "get";}
-    4% {content: "get ";}
-    5% {content: "get i";}
-    6% {content: "get in";}
-    7% {content: "get in ";}
-    8% {content: "get in t";}
-    9% {content: "get in to";}
-    10% {content: "get in tou";}
-    11% {content: "get in touc";}
-    12% {content: "get in touch";}
-    13% {content: "get in touch!";}
-    100% {content: "get in touch!";}
-}
 
 .contact-svg {
     width: 50px;
