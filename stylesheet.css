@@ -1,5 +1,5 @@
 :root {
-    --hg-font: 'Lucida Console';
+    --hg-font: 'Lucida Console', 'Courier New', monospace;
 
     --hg-dm-text: #ACACAC;
     --hg-dm-text-active: #ACACAC50;
