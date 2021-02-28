@@ -1,0 +1,458 @@
+:root {
+    --hg-font: 'Lucida Console';
+
+    --hg-dm-text: #ACACAC;
+    --hg-dm-text-active: #ACACAC50;
+    --hg-dm-bg: #262626;
+    --hg-dm-accent: #3475AA;
+
+    --hg-lm-bg: #E3E3E3;
+    --hg-lm-text: #444444;
+    --hg-lm-text-active: #44444480;
+    --hg-lm-accent: #ADD3F2;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+    font-family: var(--hg-font);
+    font-size: 16px;
+    color: var(--hg-dm-text);
+    background-color: var(--hg-dm-bg);
+    transition: background-color .2s;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--hg-dm-accent);
+}
+
+#menu-container {
+    position: fixed;
+    left: 25px;
+    bottom: 25px;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "nav settings"
+        "burger burger";
+}
+
+.menu-items {
+    position: relative;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: max-width .2s, left .2s, opacity .2s;
+    transition-timing-function: linear;
+    overflow-x: hidden;
+    max-width: 0;
+    opacity: 0;
+}
+
+.menu-wipe {
+    max-width: 100%;
+}
+
+.menu-fade {
+    opacity: 1;
+}
+
+#nav {
+    grid-area: nav;
+    left: 0;
+}
+
+#settings {
+    grid-area: settings;
+    justify-content: flex-end;
+    left: 0;
+}
+
+.menu-checkbox {
+    display: none;
+}
+
+#burger {
+    grid-area: burger
+}
+
+.menu-items a, .menu-items button {
+    display: inline-block;
+    color: var(--hg-dm-text);
+    border: none;
+    font-family: var(--hg-font);
+    font-size: 1em;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: var(--hg-dm-accent);
+    white-space: nowrap;
+}
+
+.menu-items > * {
+    margin-bottom: 10px;
+}
+
+.settings-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.settings-items > * {
+    margin-right: 10px;
+}
+
+#active {
+    color: var(--hg-dm-text-active);
+}
+
+#burger {
+    width: 50px;
+    height: 50px;
+    background-color: var(--hg-dm-accent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.burger-rHanded {
+    position: relative;
+    right: 0;
+}
+
+#burger:hover {
+    cursor: pointer;
+}
+
+.burger-line {
+    position: relative;
+    top: 0;
+    display: inline-block;
+    width: 25px;
+    height: 3px;
+    margin: 3px;
+    background-color: var(--hg-dm-text);
+    opacity: 1;
+    transform: rotate(0);
+    transform-origin: center;
+    transition: opacity .2s, transform .2s, margin .2s;
+}
+
+.burger-cross-first-line {
+    margin: 0;
+    transform: rotate(45deg);
+    top: 3px;
+}
+
+.burger-cross-second-line {
+    margin: 0;
+    opacity: 0;
+}
+
+.burger-cross-third-line {
+    margin: 0;
+    transform: rotate(-45deg);
+    top: -3px;
+}
+
+.content-center {
+    padding: 0 0 0 25px;
+    position: relative;
+    top: 50vh;
+    transform: translateY(-50%);
+    width: max-content;
+}
+
+.content-center h1 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#header-cursor {
+    animation: blink 1.2s linear 0s infinite normal forwards;
+}
+
+@keyframes blink {
+    0% {opacity: 0;}
+    49% {opacity: 0;}
+    50% {opacity: 1;}
+    99% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+#hg-header:before {
+    content: "";
+    animation: typeHG 10s linear .5s 1 normal forwards;
+}
+
+@keyframes typeHG {
+    0% {content: "h";}
+    1% {content: "ha";}
+    2% {content: "har";}
+    3% {content: "harr";}
+    4% {content: "harry";}
+    5% {content: "harry ";}
+    6% {content: "harry p";}
+    7% {content: "harry po";}
+    8% {content: "harry pot";}
+    9% {content: "harry pott";}
+    10% {content: "harry pott";}
+    11% {content: "harry pott";}
+    12% {content: "harry pott";}
+    13% {content: "harry pot";}
+    14% {content: "harry po";}
+    15% {content: "harry p";}
+    16% {content: "harry ";}
+    17% {content: "harry g";}
+    18% {content: "harry gi";}
+    19% {content: "harry gil";}
+    20% {content: "harry gilb";}
+    21% {content: "harry gilbe";}
+    22% {content: "harry gilber";}
+    23% {content: "harry gilbert";}
+    100% {content: "harry gilbert";}
+}
+
+footer {
+    font-size: 0.7rem;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 25px;
+}
+
+.info-page-cont {
+    margin-left: 25px;
+    width: calc(100% - 50px);
+    padding-bottom: 100px;
+}
+
+.info-page-header {
+    margin: 0;
+    padding: 50px 0 25px 0;
+}
+
+.info-page-cont p, .info-page-cont li {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#exp-header:before {
+    content: "";
+    animation: typeEXP 10s linear .5s 1 normal forwards;
+}
+
+@keyframes typeEXP {
+    1% {content: "e";}
+    2% {content: "ex";}
+    3% {content: "exp";}
+    4% {content: "expe";}
+    5% {content: "exper";}
+    6% {content: "experi";}
+    7% {content: "experie";}
+    8% {content: "experien";}
+    9% {content: "experienc";}
+    10% {content: "experience";}
+    100% {content: "experience";}
+}
+
+.exp-item {
+    position: relative;
+    padding: 45px 0;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 
+    "logo headers"
+    "body body";
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+}
+
+.exp-item:after {
+    content: '';
+    grid-area: body;
+    margin: 0 auto;
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 1px;
+    background-color: var(--hg-dm-text);
+}
+
+.exp-item:last-of-type:after {
+    display: none;
+}
+
+.exp-item:first-of-type {
+    padding-top: 25px;
+}
+
+.exp-item:last-of-type {
+    padding-bottom: 0;
+}
+
+.exp-logo {
+    grid-area: logo;
+}
+
+.exp-svg-fill {
+    fill: var(--hg-dm-text);
+    transition: fill .2s;
+}
+
+.svg-wide {
+    width: 75px;
+}
+
+.svg-tall {
+    height: 75px;
+}
+
+.exp-headers {
+    grid-area: headers;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.exp-headers h2 {
+    margin: 0;
+}
+
+.exp-headers p {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.exp-item-body {
+    grid-area: body;
+}
+
+
+
+#who-header:before {
+    content: "";
+    animation: typeWHO 10s linear .5s 1 normal forwards;
+}
+
+@keyframes typeWHO {
+    1% {content: "w";}
+    2% {content: "wh";}
+    3% {content: "who";}
+    4% {content: "who ";}
+    5% {content: "who a";}
+    6% {content: "who am";}
+    7% {content: "who am ";}
+    8% {content: "who am i";}
+    9% {content: "who am i?";}
+    100% {content: "who am i?";}
+}
+
+.who-cont p {
+    margin: 10px 0;
+}
+
+.who-cont ul {
+    margin: 0;
+}
+
+p.p-before-ul {
+    margin-bottom: 0;
+}
+
+.who-cont h3 {
+    margin: 50px 0 0 0;
+}
+
+
+
+#contact-header:before {
+    content: "";
+    animation: typeCON 10s linear .5s 1 normal forwards;
+}
+
+@keyframes typeCON {
+    1% {content: "g";}
+    2% {content: "ge";}
+    3% {content: "get";}
+    4% {content: "get ";}
+    5% {content: "get i";}
+    6% {content: "get in";}
+    7% {content: "get in ";}
+    8% {content: "get in t";}
+    9% {content: "get in to";}
+    10% {content: "get in tou";}
+    11% {content: "get in touc";}
+    12% {content: "get in touch";}
+    13% {content: "get in touch!";}
+    100% {content: "get in touch!";}
+}
+
+.contact-svg {
+    width: 50px;
+}
+
+email {
+    display: block;
+    margin: 10px 0;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .content-center {
+        padding: 0;
+        margin: auto;
+    }
+    
+    .info-page-cont {
+        max-width: 700px;
+        margin: auto;
+    }
+
+    .exp-item {
+        padding: 75px 0;
+    }
+
+    .exp-item:first-of-type {
+        padding-top: 50px;
+    }
+
+    .exp-item:after {
+        bottom: -75px;
+    }
+
+    .who-cont {
+        padding: 0;
+        position: relative;
+        top: 50vh;
+        transform: translateY(-50%);
+    }
+
+    .who-cont h1 {
+        padding-top: 0;
+    }
+
+    .con-cont svg:hover {
+        cursor: pointer;
+    }
+
+    .con-cont svg:hover .exp-svg-fill {
+        fill: var(--hg-dm-accent);
+    }
+}
