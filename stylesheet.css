@@ -196,7 +196,7 @@ a {
 
 #hg-header::before {
     content: "";
-    position: relative; /* needed for webkit */
+    position: absolute; /* needed for webkit */
     animation: typeHG 10s linear .5s 1 normal forwards;
 }
 
