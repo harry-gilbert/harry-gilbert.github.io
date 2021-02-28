@@ -198,7 +198,14 @@ a {
     content: "";
     position: relative; /* needed for webkit */
     animation: typeHG 10s linear .5s 1 normal forwards;
-    -webkit-animation: webKittypeHG 10s linear .5s 1 normal forwards;
+    /* -webkit-animation: webKittypeHG 10s linear .5s 1 normal forwards; */
+    -webkit-animation-name: webKittypeHG;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-delay: .5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-direction: normal;
+    -webkit-animation-fill-mode: forwards;
 }
 
 @keyframes typeHG {
