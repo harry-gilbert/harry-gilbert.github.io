@@ -196,6 +196,7 @@ a {
 
 #hg-header::before {
     content: "";
+    position: relative; /* needed for webkit */
     animation: typeHG 10s linear .5s 1 normal forwards;
 }
 
@@ -252,6 +253,7 @@ footer {
 
 #exp-header::before {
     content: "";
+    position: relative; /* needed for webkit */
     animation: typeEXP 10s linear .5s 1 normal forwards;
 }
 
@@ -348,6 +350,7 @@ footer {
 
 #who-header::before {
     content: "";
+    position: relative; /* needed for webkit */
     animation: typeWHO 10s linear .5s 1 normal forwards;
 }
 
@@ -384,6 +387,7 @@ p.p-before-ul {
 
 #contact-header::before {
     content: "";
+    position: relative; /* needed for webkit */
     animation: typeCON 10s linear .5s 1 normal forwards;
 }
 
