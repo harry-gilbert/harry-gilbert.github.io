@@ -4,7 +4,7 @@
     --hg-dm-text: #ACACAC;
     --hg-dm-text-active: #ACACAC50;
     --hg-dm-bg: #262626;
-    --hg-dm-accent: #3475AA;
+    --hg-dm-accent: #16568A;
 
     --hg-lm-bg: #E3E3E3;
     --hg-lm-text: #444444;
@@ -120,8 +120,8 @@ a {
 }
 
 #burger {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     background-color: var(--hg-dm-accent);
     display: flex;
     flex-direction: column;
@@ -142,9 +142,9 @@ a {
     position: relative;
     top: 0;
     display: inline-block;
-    width: 25px;
-    height: 3px;
-    margin: 3px;
+    width: 36px;
+    height: 4px;
+    margin: 4px;
     background-color: var(--hg-dm-text);
     opacity: 1;
     transform: rotate(0);
@@ -155,7 +155,7 @@ a {
 .burger-cross-first-line {
     margin: 0;
     transform: rotate(45deg);
-    top: 3px;
+    top: 4px;
 }
 
 .burger-cross-second-line {
@@ -166,7 +166,7 @@ a {
 .burger-cross-third-line {
     margin: 0;
     transform: rotate(-45deg);
-    top: -3px;
+    top: -4px;
 }
 
 .content-center {
