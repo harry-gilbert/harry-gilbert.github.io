@@ -1,15 +1,17 @@
 :root {
     --hg-font: 'Lucida Console', 'Courier New', monospace;
 
-    --hg-dm-text: #ACACAC;
-    --hg-dm-text-active: #ACACAC50;
+    --hg-dm-text: #D0D0D0;
+    --hg-dm-text-active: #D0D0D050;
     --hg-dm-bg: #262626;
     --hg-dm-accent: #16568A;
+    --hg-dm-link: #7AABD2;
 
     --hg-lm-bg: #E3E3E3;
     --hg-lm-text: #444444;
     --hg-lm-text-active: #44444480;
     --hg-lm-accent: #ADD3F2;
+    --hg-lm-link: #006FC8;
 }
 
 html, body {
@@ -30,7 +32,7 @@ p {
 }
 
 a {
-    color: var(--hg-dm-accent);
+    color: var(--hg-dm-link);
 }
 
 #menu-container {
@@ -205,7 +207,7 @@ footer {
 .info-page-cont {
     margin-left: 25px;
     width: calc(100% - 50px);
-    padding-bottom: 100px;
+    padding-bottom: 115px;
 }
 
 .info-page-header {
