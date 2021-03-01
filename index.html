@@ -46,9 +46,9 @@
             <a href="#" onclick="toggleSettings()">settings</a>
         </nav>
         <div class="menu-items" id="settings">
-            <div class="settings-items" onclick="toggleDM()">
-                <button type="button">dark mode</button>
-                <p id="dark-mode-status">on</p>
+            <div class="settings-items" onclick="nextTheme()">
+                <button type="button">theme</button>
+                <p><span id="theme-index">1/4</span> <span id="theme-status">azul oscuro</span></p>
             </div>
             <a href="#" id="settings-back" onclick="toggleSettings()">&lt; back</a>
             
@@ -60,6 +60,7 @@
         </div>
     </div>
 
+<script src="scripts/themes.js"></script>
 <script src="scripts/burger-menu.js"></script>
 <script src="scripts/kinetic-typing.js"></script>
 

@@ -5,17 +5,13 @@ STYLESHEET FOR harry-gilbert WEBSITE
 :root {
     --hg-font: 'Lucida Console', 'Courier New', monospace;
 
-    --hg-dm-text: #D0D0D0;
-    --hg-dm-text-active: #D0D0D050;
-    --hg-dm-bg: #262626;
-    --hg-dm-accent: #16568A;
-    --hg-dm-link: #7AABD2;
+    --hg-text: #D0D0D0;
+    --hg-text-active: #D0D0D050;
+    --hg-bg: #262626;
+    --hg-accent: #16568A;
+    --hg-link: #7AABD2;
 
-    --hg-lm-bg: #E3E3E3;
-    --hg-lm-text: #444444;
-    --hg-lm-text-active: #44444480;
-    --hg-lm-accent: #ADD3F2;
-    --hg-lm-link: #006FC8;
+    --hg-transition-duration: .2s;
 }
 
 html, body {
@@ -25,9 +21,9 @@ html, body {
     min-height: 100vh;
     font-family: var(--hg-font);
     font-size: 16px;
-    color: var(--hg-dm-text);
-    background-color: var(--hg-dm-bg);
-    transition: background-color .2s;
+    color: var(--hg-text);
+    background-color: var(--hg-bg);
+    transition: background-color var(--hg-transition-duration);
 }
 
 
@@ -91,17 +87,18 @@ html, body {
 
 .menu-items a, .menu-items button {
     display: inline-block;
-    color: var(--hg-dm-text);
+    color: var(--hg-text);
     border: none;
     font-family: var(--hg-font);
     font-size: 1em;
     text-decoration: none;
     padding: 5px 10px;
-    background-color: var(--hg-dm-accent);
-    white-space: nowrap;
+    background-color: var(--hg-accent);
+    transition: background-color var(--hg-transition-duration);
 }
 
 .menu-items > * {
+    white-space: nowrap;
     margin-bottom: 10px;
 }
 
@@ -118,13 +115,14 @@ html, body {
 }
 
 #active {
-    color: var(--hg-dm-text-active);
+    color: var(--hg-text-active);
 }
 
 #burger {
     width: 70px;
     height: 70px;
-    background-color: var(--hg-dm-accent);
+    background-color: var(--hg-accent);
+    transition: background-color var(--hg-transition-duration);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -147,7 +145,7 @@ html, body {
     width: 36px;
     height: 4px;
     margin: 4px;
-    background-color: var(--hg-dm-text);
+    background-color: var(--hg-text);
     opacity: 1;
     transform: rotate(0);
     transform-origin: center;
@@ -182,7 +180,7 @@ p {
 }
 
 a {
-    color: var(--hg-dm-link);
+    color: var(--hg-link);
 }
 
 .content-center {
@@ -261,7 +259,7 @@ footer {
     transform: translateX(-50%);
     width: 50px;
     height: 1px;
-    background-color: var(--hg-dm-text);
+    background-color: var(--hg-text);
 }
 
 .exp-item:last-of-type::after {
@@ -281,7 +279,7 @@ footer {
 }
 
 .exp-svg-fill {
-    fill: var(--hg-dm-text);
+    fill: var(--hg-text);
     transition: fill .2s;
 }
 
@@ -349,7 +347,7 @@ p.p-before-ul {
 
 address a {
     font-style: normal;
-    color: var(--hg-dm-text);
+    color: var(--hg-text);
     text-decoration: none;
 }
 
@@ -405,6 +403,6 @@ address a {
     }
 
     .con-cont svg:hover .exp-svg-fill {
-        fill: var(--hg-dm-accent);
+        fill: var(--hg-accent);
     }
 }
