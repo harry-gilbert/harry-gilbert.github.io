@@ -1,3 +1,7 @@
+/*//////////////////////////////////
+STYLESHEET FOR harry-gilbert WEBSITE
+//////////////////////////////////*/
+
 :root {
     --hg-font: 'Lucida Console', 'Courier New', monospace;
 
@@ -26,14 +30,10 @@ html, body {
     transition: background-color .2s;
 }
 
-p {
-    margin: 0;
-    padding: 0;
-}
 
-a {
-    color: var(--hg-dm-link);
-}
+
+/* BURGER MENU //
+///////////////*/
 
 #menu-container {
     position: fixed;
@@ -171,6 +171,20 @@ a {
     top: -4px;
 }
 
+
+
+/* GENERAL STYLING //
+///////////////////*/
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--hg-dm-link);
+}
+
 .content-center {
     padding: 0 0 0 25px;
     position: relative;
@@ -218,6 +232,11 @@ footer {
 .info-page-cont p, .info-page-cont li {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+/* EXPERIENCE PAGE //
+///////////////////*/
 
 .exp-item {
     position: relative;
@@ -295,6 +314,11 @@ footer {
 }
 
 
+
+/* WHO AM I? PAGE //
+///////////////////*/
+
+
 .who-cont p {
     margin: 10px 0;
 }
@@ -313,15 +337,34 @@ p.p-before-ul {
 
 
 
-.contact-svg {
+/* GET IN TOUCH! PAGE //
+//////////////////////*/
+
+.social-cont {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+address a {
+    font-style: normal;
+    color: var(--hg-dm-text);
+    text-decoration: none;
+}
+
+.svg-link {
+    text-decoration: none;
+}
+
+.svg-link svg {
     width: 50px;
+    margin-right: 10px;
 }
 
-email {
-    display: block;
-    margin: 10px 0;
-}
 
+/* DESKTOP STYLING //
+///////////////////*/
 
 @media only screen and (min-width: 600px) {
     .content-center {
