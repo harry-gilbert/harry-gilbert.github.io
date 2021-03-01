@@ -13,7 +13,7 @@ const themes = [
         accent: "#16568A"
     },
     {
-        name: "azul claro",
+        name: "notebook",
         text: "#444444",
         textActive: "#44444480",
         link: "#006FC8",
@@ -48,9 +48,7 @@ const themes = [
 
 
 const toggleTheme = (index) => {
-    if ( index >= themes.length) {
-        index = 0;
-    };
+    if ( index >= themes.length) { index = 0; };
     document.documentElement.style.setProperty('--hg-bg', themes[index].background);
     document.documentElement.style.setProperty('--hg-text', themes[index].text);
     document.documentElement.style.setProperty('--hg-text-active', themes[index].textActive);
