@@ -380,22 +380,6 @@ address a {
 ///////////////////*/
 
 @media only screen and (min-width: 600px) {
-    
-    #active:hover::before {
-        max-width: 0;
-    }
-
-    #active:hover {
-        cursor: default;
-    }
-
-    #burger:hover, .menu-items a:hover, .settings-items button:hover {
-        cursor: pointer;
-    }
-    
-    #burger:hover::before, .menu-items a:hover::before, .settings-items button:hover::before {
-        max-width: 100%;
-    }
 
     .content-center {
         padding: 0;
@@ -428,6 +412,24 @@ address a {
 
     .who-cont h1 {
         padding-top: 0;
+    }
+}
+
+@media (hover: hover) {
+    #active:hover::before {
+        max-width: 0;
+    }
+
+    #active:hover {
+        cursor: default;
+    }
+
+    #burger:hover, .menu-items a:hover, .settings-items button:hover {
+        cursor: pointer;
+    }
+    
+    #burger:hover::before, .menu-items a:hover::before, .settings-items button:hover::before {
+        max-width: 100%;
     }
 
     .con-cont svg:hover {
