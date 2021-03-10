@@ -7,13 +7,17 @@ async function typeInCont() {
     let elems = document.getElementsByClassName("typingElem");
     for (let i=0; i<elems.length; i++) {
         let copy = elems[i].dataset.toType;
-        let comedyError = elems[i].dataset.typeError;
+        let typeErrorCount = Number(elems[i].dataset.typeErrorCount);
+        let comedyErrors = [];
+        for (let e=1; e<=typeErrorCount; e++) {
+            comedyErrors.push( eval(`elems[i].dataset.typeError${e};`) );
+        }
+        let comedyError = comedyErrors[Math.floor((Math.random() * comedyErrors.length))]
         if (comedyError) {
             let matchCount = 0;
             let copyRemaining;
             for (let a=0; a<copy.length; a++) {
                 if ( copy[a] == comedyError[a] ) {
-                    //console.log(`comparing ${copy[a]} & ${comedyError[a]}`);
                     matchCount++;
                 } else {
                     break;
