@@ -10,7 +10,8 @@ const themes = [
         textActive: "#D0D0D050",
         link: "#7AABD2",
         background: "#262626",
-        accent: "#16568A"
+        accent: "#16568A",
+        accentLight: "#FF5D73"
     },
     {
         name: "notebook",
@@ -18,7 +19,8 @@ const themes = [
         textActive: "#44444480",
         link: "#006FC8",
         background: "#E3E3E3",
-        accent: "#ADD3F2"
+        accent: "#ADD3F2",
+        accentLight: "#BD7A5D"
     },
     {
         name: "candy",
@@ -26,7 +28,8 @@ const themes = [
         textActive: "#4A306D50",
         link: "#C50720",
         background: "#D3BCCC",
-        accent: "#C8A5CA"
+        accent: "#C8A5CA",
+        accentLight: "#FDF5BF"
     },
     {
         name: "monteverde",
@@ -34,7 +37,8 @@ const themes = [
         textActive: "#E6FDFF50",
         link: "#E7D47F",
         background: "#404E5C",
-        accent: "#719470"
+        accent: "#719470",
+        accentLight: "#DBD643"
     },
     {
         name: "seaside",
@@ -42,7 +46,8 @@ const themes = [
         textActive: "#44444450",
         link: "#F54100",
         background: "#ADD2E5",
-        accent: "#FAF9C6"
+        accent: "#FAF9C6",
+        accentLight: "#CC8054"
     },
 ];
 
@@ -53,6 +58,7 @@ const toggleTheme = (index) => {
     document.documentElement.style.setProperty('--hg-text', themes[index].text);
     document.documentElement.style.setProperty('--hg-text-active', themes[index].textActive);
     document.documentElement.style.setProperty('--hg-accent', themes[index].accent);
+    document.documentElement.style.setProperty('--hg-accent-light', themes[index].accentLight);
     document.documentElement.style.setProperty('--hg-link', themes[index].link);
     document.getElementById("theme-status").innerHTML = themes[index].name;
     document.getElementById("theme-index").innerHTML = `${index+1}/${themes.length}`;

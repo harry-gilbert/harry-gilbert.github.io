@@ -9,6 +9,7 @@ STYLESHEET FOR harry-gilbert WEBSITE
     --hg-text-active: #D0D0D050;
     --hg-bg: #262626;
     --hg-accent: #16568A;
+    --hg-accent-light: #FF5D73;
     --hg-link: #7AABD2;
 
     --hg-transition-duration: .2s;
@@ -129,13 +130,35 @@ html, body {
     align-items: center;
 }
 
-.burger-rHanded {
-    position: relative;
-    right: 0;
+#burger:hover, .menu-items a:hover, .settings-items button:hover {
+    cursor: pointer;
 }
 
-#burger:hover {
-    cursor: pointer;
+#burger, .menu-items a, .settings-items button {
+    position: relative;
+}
+
+#burger::before, .menu-items a::before, .settings-items button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width:100%;
+    max-width: 0;
+    background-color: var(--hg-accent-light);
+    transition: max-width var(--hg-transition-duration);
+}
+
+#burger::before {
+    height: 100%;
+}
+
+.menu-items a::before, .settings-items button::before {
+    height: 3px;
+}
+
+#burger:hover::before, .menu-items a:hover::before, .settings-items button:hover::before {
+    max-width: 100%;
 }
 
 .burger-line {
