@@ -381,6 +381,14 @@ address a {
 
 @media only screen and (min-width: 600px) {
     
+    #active:hover::before {
+        max-width: 0;
+    }
+
+    #active:hover {
+        cursor: default;
+    }
+
     #burger:hover, .menu-items a:hover, .settings-items button:hover {
         cursor: pointer;
     }
