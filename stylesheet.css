@@ -130,10 +130,6 @@ html, body {
     align-items: center;
 }
 
-#burger:hover, .menu-items a:hover, .settings-items button:hover {
-    cursor: pointer;
-}
-
 #burger, .menu-items a, .settings-items button {
     position: relative;
 }
@@ -155,10 +151,6 @@ html, body {
 
 .menu-items a::before, .settings-items button::before {
     height: 3px;
-}
-
-#burger:hover::before, .menu-items a:hover::before, .settings-items button:hover::before {
-    max-width: 100%;
 }
 
 .burger-line {
@@ -388,6 +380,15 @@ address a {
 ///////////////////*/
 
 @media only screen and (min-width: 600px) {
+    
+    #burger:hover, .menu-items a:hover, .settings-items button:hover {
+        cursor: pointer;
+    }
+    
+    #burger:hover::before, .menu-items a:hover::before, .settings-items button:hover::before {
+        max-width: 100%;
+    }
+
     .content-center {
         padding: 0;
         margin: auto;
