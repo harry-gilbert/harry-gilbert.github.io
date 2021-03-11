@@ -513,6 +513,6 @@ address a {
     }
 
     .photo-cont:hover > img {
-        transform: scale(105%);
+        transform: scale(1.05);
     }
 }
