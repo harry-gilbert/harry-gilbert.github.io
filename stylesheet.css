@@ -435,7 +435,7 @@ address a {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #000000CC;
+    background-color: #444444CC;
     z-index: 1;
 }
 
