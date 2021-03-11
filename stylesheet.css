@@ -376,6 +376,73 @@ address a {
 }
 
 
+
+/* PHOTOGRAPHY PAGE //
+////////////////////*/
+
+#photography-cont h3 {
+    margin-top: 50px;
+}
+
+#photographs-cont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.photo-column {
+    width: calc(50% - 5px);
+}
+
+.photo-cont {
+    position: relative;
+    margin: 0 0 10px 0;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #00000000;
+}
+
+.photo-cont img {
+    width: 100%;
+    max-width: 80vw;
+    max-height: 80vh;
+    height: auto;
+    transform-origin: center;
+    transition: transform var(--hg-transition-duration);
+}
+
+.photo-cont figcaption {
+    /* display: none; */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #00000099;
+    font-family: var(--hg-font);
+    font-size: 0.8rem;
+    color: #CCCCCC;
+    padding: 7px 15px;
+}
+
+.photo-cont-view {
+    width:100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000000CC;
+    z-index: 1;
+}
+
+.photo-cont-view img {
+    width: auto;
+}
+
+
 /* DESKTOP STYLING //
 ///////////////////*/
 
@@ -438,5 +505,14 @@ address a {
 
     .con-cont svg:hover .exp-svg-fill {
         fill: var(--hg-accent);
+    }
+
+
+    .photo-cont:hover {
+        cursor: pointer;
+    }
+
+    .photo-cont:hover > img {
+        transform: scale(105%);
     }
 }
