@@ -44,6 +44,7 @@ html, body {
         "nav settings"
         "burger burger";
     pointer-events: none;
+    min-width: max-content;
 }
 
 .menu-items {
@@ -116,6 +117,16 @@ html, body {
 
 .settings-items > * {
     margin-right: 10px;
+}
+
+.settings-items > button {
+    margin-right: 0;
+}
+
+.settings-items > p {
+    padding: 5px 10px;
+    background-color: var(--hg-text);
+    color: var(--hg-accent);
 }
 
 #active {
