@@ -410,7 +410,7 @@ address a {
 
 .photo-cont img {
     width: 100%;
-    max-width: 80vw;
+    max-width: 90vw;
     max-height: 80vh;
     height: auto;
     transform-origin: center;
@@ -418,15 +418,14 @@ address a {
 }
 
 .photo-cont figcaption {
-    /* display: none; */
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: #00000099;
+    align-self: center;
+    width: calc(100% - 30px);
+    background-color: #1a1a1a;
     font-family: var(--hg-font);
     font-size: 0.8rem;
     color: #CCCCCC;
     padding: 7px 15px;
+    z-index:0;
 }
 
 .photo-cont-view {
@@ -441,10 +440,12 @@ address a {
 
 .photo-cont-view img {
     width: auto;
+    transition:none;
 }
 
 .photo-cont-view figcaption {
     position: relative;
+    width: calc(90vw - 30px);
 }
 
 
@@ -484,6 +485,10 @@ address a {
 
     .who-cont h1 {
         padding-top: 0;
+    }
+
+    .photo-cont-view figcaption {
+        width: auto;
     }
 }
 
