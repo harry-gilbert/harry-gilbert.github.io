@@ -43,6 +43,7 @@ html, body {
     grid-template-areas: 
         "nav settings"
         "burger burger";
+    pointer-events: none;
 }
 
 .menu-items {
@@ -83,7 +84,8 @@ html, body {
 }
 
 #burger {
-    grid-area: burger
+    grid-area: burger;
+    pointer-events: auto;
 }
 
 .menu-items a, .menu-items button {
@@ -96,6 +98,7 @@ html, body {
     padding: 5px 10px;
     background-color: var(--hg-accent);
     transition: background-color var(--hg-transition-duration);
+    pointer-events: auto;
 }
 
 .menu-items > * {
