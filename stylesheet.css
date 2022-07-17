@@ -12,7 +12,8 @@ STYLESHEET FOR harry-gilbert WEBSITE
     --hg-accent-light: #FF5D73;
     --hg-link: #7AABD2;
 
-    --hg-transition-duration: .2s;
+    --hg-transition-duration: 150ms;
+    --hg-theme-transition-duration: 200ms;
 }
 
 html, body {
@@ -24,7 +25,7 @@ html, body {
     font-size: 16px;
     color: var(--hg-text);
     background-color: var(--hg-bg);
-    transition: background-color var(--hg-transition-duration);
+    transition: background-color var(--hg-theme-transition-duration);
 }
 
 
@@ -32,19 +33,34 @@ html, body {
 /* BURGER MENU //
 ///////////////*/
 
-#menu-container {
+.menu-container {
     position: fixed;
     left: 25px;
     bottom: 25px;
     display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 10px;
+    grid-template-columns: auto;
     grid-template-rows: auto auto;
     grid-template-areas: 
-        "nav settings"
-        "burger burger";
+        "nav"
+        "burger";
     pointer-events: none;
     min-width: max-content;
+}
+
+.menu-container-lh {
+    right: 25px;
+    left: initial;
+    justify-items: end;
+}
+
+.menu-items-flexbox {
+    grid-area: nav;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-items-flexbox-lh {
+    justify-content: end;
 }
 
 .menu-items {
@@ -54,39 +70,33 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    transition: max-width .2s, left .2s, opacity .2s;
+    justify-content: flex-end;
+    transition: max-width var(--hg-transition-duration);
     transition-timing-function: linear;
     overflow-x: hidden;
     max-width: 0;
-    opacity: 0;
 }
 
-.menu-wipe {
+.menu-items-lh {
+    align-items: flex-end;
+    transform-origin: 100% 100%;
+}
+
+.menu-in-view {
     max-width: 100%;
-}
-
-.menu-fade {
-    opacity: 1;
-}
-
-#nav {
-    grid-area: nav;
-    left: 0;
-}
-
-#settings {
-    grid-area: settings;
-    justify-content: flex-end;
-    left: 0;
 }
 
 .menu-checkbox {
     display: none;
 }
 
-#burger {
+.burger {
     grid-area: burger;
     pointer-events: auto;
+}
+
+.burger-lh {
+    justify-self: flex-end;
 }
 
 .menu-items a, .menu-items button {
@@ -98,7 +108,7 @@ html, body {
     text-decoration: none;
     padding: 5px 10px;
     background-color: var(--hg-accent);
-    transition: background-color var(--hg-transition-duration);
+    transition: background-color var(--hg-theme-transition-duration);
     pointer-events: auto;
 }
 
@@ -115,10 +125,6 @@ html, body {
     flex-wrap: nowrap;
 }
 
-.settings-items > * {
-    margin-right: 10px;
-}
-
 .settings-items > button {
     margin-right: 0;
 }
@@ -133,22 +139,22 @@ html, body {
     color: var(--hg-text-active);
 }
 
-#burger {
+.burger {
     width: 70px;
     height: 70px;
     background-color: var(--hg-accent);
-    transition: background-color var(--hg-transition-duration);
+    transition: background-color var(--hg-theme-transition-duration);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#burger, .menu-items a, .settings-items button {
+.burger, .menu-items a, .settings-items button {
     position: relative;
 }
 
-#burger::before, .menu-items a::before, .settings-items button::before {
+.burger::before, .menu-items a::before, .settings-items button::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -159,7 +165,7 @@ html, body {
     transition: max-width var(--hg-transition-duration);
 }
 
-#burger::before {
+.burger::before {
     height: 100%;
 }
 
@@ -178,7 +184,7 @@ html, body {
     opacity: 1;
     transform: rotate(0);
     transform-origin: center;
-    transition: opacity .2s, transform .2s, margin .2s;
+    transition: opacity var(--hg-theme-transition-duration), transform var(--hg-theme-transition-duration), margin var(--hg-theme-transition-duration);
 }
 
 .burger-cross-first-line {
@@ -309,7 +315,7 @@ footer {
 
 .exp-svg-fill {
     fill: var(--hg-text);
-    transition: fill .2s;
+    transition: fill var(--hg-theme-transition-duration);
 }
 
 .svg-wide {
@@ -515,11 +521,11 @@ address a {
         cursor: default;
     }
 
-    #burger:hover, .menu-items a:hover, .settings-items button:hover {
+    .burger:hover, .menu-items a:hover, .settings-items button:hover {
         cursor: pointer;
     }
     
-    #burger:hover::before, .menu-items a:hover::before, .settings-items button:hover::before {
+    .burger:hover::before, .menu-items a:hover::before, .settings-items button:hover::before {
         max-width: 100%;
     }
 

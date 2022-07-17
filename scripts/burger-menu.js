@@ -3,40 +3,67 @@
 
 "use strict";
 
-const nav = document.getElementById("nav");
-const settings = document.getElementById("settings");
-const burger = document.getElementById("burger");
+const menuCont = document.getElementsByClassName("menu-container")[0];
+const nav = document.getElementsByClassName("nav")[0];
+const settings = document.getElementsByClassName("settings")[0];
+const burger = document.getElementsByClassName("burger")[0];
 const burgerLines = document.getElementsByClassName("burger-line");
+const menuItems = document.getElementsByClassName("menu-items");
+const lhStatus = document.getElementById("lh-status");
+let settingsItems = document.querySelectorAll(".settings-items button");
+const menuItemsFlexBox = document.getElementsByClassName("menu-items-flexbox")[0];
+let transitionDur = getComputedStyle(document.documentElement).getPropertyValue('--hg-transition-duration');
+transitionDur = transitionDur.replace("ms","");
 
 const toggleMenu = () => {
-    if ( settings.classList.contains("menu-wipe")) {
-        resetMenu();
-    }
-    nav.classList.toggle("menu-fade");
-    nav.classList.toggle("menu-wipe");
+    toggleMenuWidth();
     burgerLines[0].classList.toggle("burger-cross-first-line");
     burgerLines[1].classList.toggle("burger-cross-second-line");
     burgerLines[2].classList.toggle("burger-cross-third-line");
 }
 
 const toggleSettings = () => {
-    if ( settings.classList.contains("menu-wipe")) {
-        resetMenu();
+    if ( settings.classList.contains("menu-in-view")) {
+        settings.classList.toggle("menu-in-view");
+        setTimeout(function(){nav.classList.toggle("menu-in-view");}, transitionDur);
     } else {
-        nav.classList.toggle("menu-fade");
-        settings.classList.toggle("menu-fade");
-        let navWidth = nav.clientWidth + 10;
-        nav.style.left = `-${navWidth}px`;
-        settings.style.left = `-${navWidth}px`;
-        settings.classList.toggle("menu-wipe");
+        nav.classList.toggle("menu-in-view");
+        setTimeout(function(){settings.classList.toggle("menu-in-view");}, transitionDur);
     }
-    
 }
 
-const resetMenu = () => {
-    nav.classList.toggle("menu-fade");
-    settings.classList.toggle("menu-fade");
-    settings.classList.toggle("menu-wipe");
-    nav.style.left = "0";
-    settings.style.left = "0";
+const toggleMenuWidth = () => {
+    if ( settings.classList.contains("menu-in-view")) {
+        settings.classList.toggle("menu-in-view");
+    } else {
+        nav.classList.toggle("menu-in-view");
+    };
+}
+
+const toggleHandedness = () => {
+    menuCont.classList.toggle("menu-container-lh");
+    menuItemsFlexBox.classList.toggle("menu-items-flexbox-lh");
+    burger.classList.toggle("burger-lh");
+    for (let i=0; i<menuItems.length; i++) {
+        menuItems[i].classList.toggle("menu-items-lh");
+        settingsItems[i].parentNode.appendChild(settingsItems[i]);
+    };
+    if ( lhStatus.innerHTML == "on" ) {
+        lhStatus.innerHTML = "off";
+        for (let i=0; i<settingsItems.length; i++) {
+            settingsItems[i].parentNode.appendChild(settingsItems[i]);
+        };
+        localStorage.setItem("currentHandedness", "1");
+    } else {
+        lhStatus.innerHTML = "on";
+        for (let i=0; i<settingsItems.length; i++) {
+            settingsItems[i].parentNode.insertBefore(settingsItems[i],settingsItems[i].parentNode.children[0]);
+        };
+        localStorage.setItem("currentHandedness", "0");
+    };
+}
+
+let userHandedness = Number(localStorage.getItem("currentHandedness"));
+if ( userHandedness > 0 ) {
+    toggleHandedness();
 }

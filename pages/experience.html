@@ -105,24 +105,29 @@
 
     <footer>built by harry, 2021</footer>
 
-    <div id="menu-container">
-        <nav class="menu-items" id="nav">
-            <a href="../index.html">home</a>
-            <a href="#" id="active">experience</a>
-            <a href="who-am-i.html">who am i?</a>
-            <a href="photography.html">photography</a>
-            <a href="get-in-touch.html">get in touch</a>
-            <a href="#" onclick="toggleSettings()">settings</a>
-        </nav>
-        <div class="menu-items" id="settings">
-            <div class="settings-items" onclick="nextTheme()">
-                <button type="button">theme</button>
-                <p><span id="theme-index">1/5</span> <span id="theme-status">azul oscuro</span></p>
+    <div class="menu-container">
+        <div class="menu-items-flexbox">
+            <nav class="menu-items nav">
+                <a href="../index.html">home</a>
+                <a href="#" id="active">experience</a>
+                <a href="who-am-i.html">who am i?</a>
+                <a href="photography.html">photography</a>
+                <a href="get-in-touch.html">get in touch</a>
+                <a href="#" onclick="toggleSettings()">settings &gt;</a>
+            </nav>
+            <div class="menu-items settings settings-in-nav">
+                <div class="settings-items" onclick="toggleHandedness()">
+                    <button type="button">left-handed</button>
+                    <p><span id="lh-status">on</span></p>
+                </div>
+                <div class="settings-items" onclick="nextTheme()">
+                    <button type="button">theme</button>
+                    <p><span id="theme-index">1/5</span> <span id="theme-status">azul oscuro</span></p>
+                </div>
+                <a href="#" id="settings-back" onclick="toggleSettings()">&lt; back</a>
             </div>
-            <a href="#" id="settings-back" onclick="toggleSettings()">&lt; back</a>
-            
         </div>
-        <div id="burger" onclick="toggleMenu()">
+        <div class="burger" onclick="toggleMenu()">
             <span class="burger-line"></span>
             <span class="burger-line"></span>
             <span class="burger-line"></span>
