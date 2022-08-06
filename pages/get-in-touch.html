@@ -73,7 +73,7 @@
                 <a href="#" id="settings-back" onclick="toggleSettings()">&lt; back</a>
             </div>
         </div>
-        <div class="burger" onclick="toggleMenu()">
+        <div class="burger" onclick="toggleMenu()" ontouchstart="getStartPos(event)" ontouchmove="swipeBurger(event)" ontouchend="toggleCheck(event)">
             <span class="burger-line"></span>
             <span class="burger-line"></span>
             <span class="burger-line"></span>

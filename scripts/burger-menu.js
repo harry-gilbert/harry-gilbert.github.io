@@ -54,16 +54,42 @@ const toggleHandedness = () => {
             settingsItems[i].parentNode.appendChild(settingsItems[i]);
         };
         localStorage.setItem("currentHandedness", "1");
+        userHandedness = 1;
     } else {
         lhStatus.innerHTML = "on";
         for (let i=0; i<settingsItems.length; i++) {
             settingsItems[i].parentNode.insertBefore(settingsItems[i],settingsItems[i].parentNode.children[0]);
         };
         localStorage.setItem("currentHandedness", "0");
+        userHandedness = 0;
     };
 }
 
 let userHandedness = Number(localStorage.getItem("currentHandedness"));
 if ( userHandedness > 0 ) {
     toggleHandedness();
+}
+
+let startX = null;
+let absDiffX = null;
+const getStartPos = (e) => {
+    startX = e.touches[0].clientX;
+}
+
+const swipeBurger = (e) => {
+    let currentX = e.touches[0].clientX;
+    let diffX = currentX - startX;
+    if ( userHandedness > 0 && diffX < 0 || userHandedness == 0 && diffX > 0 ) {
+        burger.style.transform = `translateX(${diffX}px)`;
+        absDiffX = Math.abs(diffX);
+    }
+}
+
+const toggleCheck = () => {
+    if ( absDiffX > 40 ) {
+        toggleHandedness();
+    }
+    burger.style.transform = `translateX(0)`
+    startX  = null;
+    absDiffX = null;
 }
