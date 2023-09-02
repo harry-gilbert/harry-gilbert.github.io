@@ -1,18 +1,21 @@
 // Script to enable nav interaction
 // By Harry Gilbert, 2023
 
-const buttons = document.getElementsByClassName("button");
+"use strict";
 
-// Add mousedown event listeners
-for (let i = 0; i < buttons.length; i++) {
+// Variable declarations
+const BUTTONS = document.getElementsByClassName("button");
+
+// Add event listeners
+for (let i = 0; i < BUTTONS.length; i++) {
   ["mousedown","touchstart"].forEach( evt => {
-    buttons[i].addEventListener(evt, function() {
-      buttons[i].classList.add("button-pressed");
+    BUTTONS[i].addEventListener(evt, function() {
+      BUTTONS[i].classList.add("button-pressed");
     });
   });
   ["mouseup","mouseout","touchend","touchcancel"].forEach( evt => {
-    buttons[i].addEventListener(evt, function() {
-      buttons[i].classList.remove("button-pressed");
+    BUTTONS[i].addEventListener(evt, function() {
+      BUTTONS[i].classList.remove("button-pressed");
     });
   });
 }
