@@ -5,27 +5,51 @@
 
 // Variable declarations
 const PHOTOS = document.getElementsByClassName("photo");
-const PHOTOCONTAINERS = document.getElementsByClassName("photo-container");
-const PHOTOCONTAINERSL = PHOTOCONTAINERS.length;
+const CAROUSEL = document.getElementsByClassName("carousel");
+const CAROUSELL = CAROUSEL.length;
 const PHOTOVIEWSCREEN = document.getElementById("photo-view-screen");
 
-// Resize photo to fullscreen
+// View photo in fullscreen
 let viewPhoto = (e) => {
-  e.classList.toggle("photo-view");
+  let targetPhoto = e.cloneNode();
+  e.dataset.viewing = ''
+  targetPhoto.classList.add("photo-view");
+  PHOTOVIEWSCREEN.appendChild(targetPhoto);
+  PHOTOVIEWSCREEN.classList.remove("d-none");
+  PHOTOVIEWSCREEN.focus();
 }
 
-// commenting out until UX has been designed
+// Stop viewing photo in fullscreen
+let resetPhotoView = () => {
+  PHOTOVIEWSCREEN.classList.add("d-none");
+  PHOTOVIEWSCREEN.innerHTML = "";
+  let newFocusTarget = document.querySelector('img[data-viewing]');
+  newFocusTarget.focus()
+  delete newFocusTarget.dataset.viewing
+}
+
+// Event listeners for viewing photos in fullscreen
 for (let i = 0; i < PHOTOS.length; i++) {
   PHOTOS[i].addEventListener("click", function() {
     viewPhoto(this)
-    PHOTOVIEWSCREEN.classList.toggle("d_none");
+    this.blur();
+  });
+  PHOTOS[i].addEventListener("keydown", function(evt) {
+    if (evt.code == "Enter") {
+      viewPhoto(this)
+      this.blur();
+    }
   });
 }
+PHOTOVIEWSCREEN.addEventListener("click", resetPhotoView);
+PHOTOVIEWSCREEN.addEventListener("keydown", function(evt) {
+  if (evt.code == "Escape" || evt.code == "Tab" || evt.code == "Enter" ) {
+    resetPhotoView();
+  }
+});
 
 
 let checkScroll = (elem) => {
-
-  // console.log(`scrollWidth:${elem.scrollWidth} - clientWidth:${elem.clientWidth} = ${elem.scrollWidth - elem.clientWidth}\nscrollLeft:${elem.scrollLeft}`);
 
   // if before scroll end:
   if (elem.scrollLeft < (elem.scrollWidth - elem.clientWidth - 1)) {
@@ -42,8 +66,8 @@ let checkScroll = (elem) => {
   }
 }
 
-for (let i = 0; i < PHOTOCONTAINERSL; i++) {
-  PHOTOCONTAINERS[i].addEventListener("scroll", function() {
+for (let i = 0; i < CAROUSELL; i++) {
+  CAROUSEL[i].addEventListener("scroll", function() {
     checkScroll(this);
   })
 }
@@ -51,7 +75,7 @@ for (let i = 0; i < PHOTOCONTAINERSL; i++) {
 // check scroll after page load
 // (otherwise code runs before page renders)
 window.onload = function() {
-  for (let i = 0; i < PHOTOCONTAINERSL; i++) {
-    checkScroll(PHOTOCONTAINERS[i]);
+  for (let i = 0; i < CAROUSELL; i++) {
+    checkScroll(CAROUSEL[i]);
   }
 }

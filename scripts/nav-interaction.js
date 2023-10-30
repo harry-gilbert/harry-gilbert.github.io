@@ -13,6 +13,11 @@ for (let i = 0; i < BUTTONS.length; i++) {
       BUTTONS[i].classList.add("button-pressed");
     });
   });
+  BUTTONS[i].addEventListener("keydown", function(evt) {
+    if (evt.code == "Enter") {
+      BUTTONS[i].classList.add("button-pressed");
+    }
+  });
   ["mouseup","mouseout","touchend","touchcancel"].forEach( evt => {
     BUTTONS[i].addEventListener(evt, function() {
       BUTTONS[i].classList.remove("button-pressed");
