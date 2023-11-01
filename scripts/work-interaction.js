@@ -6,14 +6,17 @@
 // Variable declarations
 const WORKARTICLES = document.getElementsByClassName("work-article");
 const WORKARTICLESL = WORKARTICLES.length;
+const ARTICLESUMMARIES = document.getElementsByClassName("work-article-summary");
 const NAV = document.getElementsByClassName("sub-page-nav")[0];
 const HGMARGIN = getComputedStyle(document.documentElement).getPropertyValue('--hg-margin').replace("px","");
 const ANIMDUR = getComputedStyle(document.documentElement).getPropertyValue('--hg-anim-dur').replace("s","") * 1000;
+
 
 // Get height integer
 let getHeightInt = (elem) => {
   return getComputedStyle(elem).height.replace("px","");
 }
+
 
 // toggle hide/show on dividers
 let toggleDividers = (dividers) => {
@@ -22,6 +25,7 @@ let toggleDividers = (dividers) => {
     dividers[i].classList.toggle("hidden");
   }
 }
+
 
 // Take element as input, return distance of element’s bottom edge beyond viewable area
 let isBelowViewArea = (el) => {
@@ -32,8 +36,10 @@ let isBelowViewArea = (el) => {
   return (distBeyondViewArea);
 }
 
+
 // Toggle show/hide feature of work page articles
 let toggleWorkInfo = (element) => {
+
   // store article dividers in var
   let dividers = element.getElementsByClassName("work-info-divider");
 
@@ -48,6 +54,7 @@ let toggleWorkInfo = (element) => {
 
   // if article info is hidden
   if (currentArticleInfoHeight == 0) {
+
     // toggle divider visibility
     toggleDividers(dividers);
 
@@ -71,7 +78,6 @@ let toggleWorkInfo = (element) => {
 
           // scroll into view
           articleInfo.scrollIntoView({behavior: "smooth", block: "center"});
-          // scrollBy({top: distBeyondViewArea, behavior: "smooth"});
         }
       }, ANIMDUR);
     }, ANIMDUR);
@@ -84,9 +90,12 @@ let toggleWorkInfo = (element) => {
   }
 }
 
-// Add event listeners
+
+// EVENT LISTENERS
 for (let i = 0; i < WORKARTICLESL; i++) {
-  WORKARTICLES[i].addEventListener("click", function() {
+
+  // Trigger article show/hide transitions
+  WORKARTICLES[i].addEventListener("click", function(evt) {
     toggleWorkInfo(this);
   });
   WORKARTICLES[i].addEventListener("keydown", function(evt) {
@@ -94,9 +103,24 @@ for (let i = 0; i < WORKARTICLESL; i++) {
       toggleWorkInfo(this);
     }
   });
+  ["mousedown","touchstart"].forEach( evt => {
+    WORKARTICLES[i].addEventListener(evt, function() {
+      pressIntoRedShadow(ARTICLESUMMARIES[i]);
+    }, {passive: true});
+  });
+  WORKARTICLES[i].addEventListener("keydown", function(evt) {
+    if (evt.code == "Enter") {
+      pressIntoRedShadow(ARTICLESUMMARIES[i]);
+    }
+  });
+  ["mouseup","mouseout","touchend","touchcancel"].forEach( evt => {
+    WORKARTICLES[i].addEventListener(evt, function() {
+      unpressOutOfRedShadow(ARTICLESUMMARIES[i]);
+    });
+  });
+  WORKARTICLES[i].addEventListener("keyup", function(evt) {
+    if (evt.code == "Enter") {
+      unpressOutOfRedShadow(ARTICLESUMMARIES[i]);
+    }
+  });
 }
-
-
-// toggle divider visibility
-// when animation is finished:
-  // toggle article visibility

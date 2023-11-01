@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Harry Gilbert&rsquo;s personal website, showcasing previous work and photography.">
   <title>Harry Gilbert</title>
   <link rel="stylesheet" href="stylesheet.css">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -16,7 +17,10 @@
   <div id="home-content-container">
     
     <main id="home-main">
-      <img src="images/harry-gilbert.jpg" alt="Me smiling at the camera">
+      <picture class="home-image">
+        <source srcset="images/harry-gilbert.webp" type="image/webp">
+        <img src="images/harry-gilbert.jpg" alt="Harry Gilbert smiling at the camera" width="274" height="274">
+      </picture>
       <h1>Harry Gilbert</h1>
       <p>email designer/developer</p>
     </main>
@@ -38,7 +42,7 @@
     
   </div>
 
-  <footer>Designed and built by Harry,&nbsp;&copy;2023</footer>
+  <footer>Site designed and built by Harry,&nbsp;&copy;2023</footer>
     
   
   <script src="scripts/nav-interaction.js"></script>

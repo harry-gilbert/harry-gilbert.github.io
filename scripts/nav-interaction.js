@@ -6,21 +6,29 @@
 // Variable declarations
 const BUTTONS = document.getElementsByClassName("button");
 
+let pressIntoRedShadow = (e) => {
+  e.classList.add("red-shadow-pressed");
+}
+
+let unpressOutOfRedShadow = (e) => {
+  e.classList.remove("red-shadow-pressed");
+}
+
 // Add event listeners
 for (let i = 0; i < BUTTONS.length; i++) {
   ["mousedown","touchstart"].forEach( evt => {
     BUTTONS[i].addEventListener(evt, function() {
-      BUTTONS[i].classList.add("button-pressed");
-    });
+      pressIntoRedShadow(BUTTONS[i]);
+    }, {passive: true});
   });
   BUTTONS[i].addEventListener("keydown", function(evt) {
     if (evt.code == "Enter") {
-      BUTTONS[i].classList.add("button-pressed");
+      pressIntoRedShadow(BUTTONS[i]);
     }
   });
   ["mouseup","mouseout","touchend","touchcancel"].forEach( evt => {
     BUTTONS[i].addEventListener(evt, function() {
-      BUTTONS[i].classList.remove("button-pressed");
+      unpressOutOfRedShadow(BUTTONS[i]);
     });
   });
 }

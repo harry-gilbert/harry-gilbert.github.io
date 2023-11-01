@@ -4,25 +4,51 @@
 "use strict";
 
 // Variable declarations
-const PHOTOS = document.getElementsByClassName("photo");
+const PHOTOS = document.querySelectorAll(".photo img");
 const CAROUSEL = document.getElementsByClassName("carousel");
 const CAROUSELL = CAROUSEL.length;
-const PHOTOVIEWSCREEN = document.getElementById("photo-view-screen");
+const PHOTOVIEWSCREEN = document.getElementsByClassName("photo-view-screen")[0];
+const PHOTOMASKS = document.querySelectorAll(".carousel .photo-mask");
+const PHOTOMASKSL = PHOTOMASKS.length;
+const LOADINGSPINNER = document.getElementsByClassName("img-load-spinner")[0];
+
+let insertImageIntoPhotoViewScreen = (image) => {
+  PHOTOVIEWSCREEN.insertBefore(image, PHOTOVIEWSCREEN.children[0]);
+}
 
 // View photo in fullscreen
 let viewPhoto = (e) => {
-  let targetPhoto = e.cloneNode();
+  let pictureElem = document.createElement('picture');
+  pictureElem.classList = e.parentElement.classList;
+  pictureElem.classList.add("photo-view");
+  let sourceElem = document.createElement('source');
+  sourceElem.type = "image/webp";
+  sourceElem.srcset = e.parentElement.firstElementChild.srcset.replace("/previews/", "/hi-res/");
+  let imageElem = document.createElement('img');
+  imageElem.src = e.src.replace("/previews/", "/hi-res/");
+  imageElem.alt = e.alt;
   e.dataset.viewing = ''
-  targetPhoto.classList.add("photo-view");
-  PHOTOVIEWSCREEN.appendChild(targetPhoto);
-  PHOTOVIEWSCREEN.classList.remove("d-none");
-  PHOTOVIEWSCREEN.focus();
+  pictureElem.appendChild(sourceElem);
+  pictureElem.appendChild(imageElem);
+  if (imageElem.complete) {
+    PHOTOVIEWSCREEN.classList.remove("o-none");
+    insertImageIntoPhotoViewScreen(pictureElem);
+    PHOTOVIEWSCREEN.focus();
+  } else {
+    LOADINGSPINNER.classList.remove("d-none", "o-none");
+    PHOTOVIEWSCREEN.classList.remove("o-none");
+    PHOTOVIEWSCREEN.focus();
+    imageElem.addEventListener("load", function() {
+      LOADINGSPINNER.classList.add("d-none", "o-none");
+      insertImageIntoPhotoViewScreen(pictureElem);
+    })
+  }
 }
 
 // Stop viewing photo in fullscreen
 let resetPhotoView = () => {
-  PHOTOVIEWSCREEN.classList.add("d-none");
-  PHOTOVIEWSCREEN.innerHTML = "";
+  PHOTOVIEWSCREEN.classList.add("o-none");
+  PHOTOVIEWSCREEN.removeChild(PHOTOVIEWSCREEN.firstElementChild);
   let newFocusTarget = document.querySelector('img[data-viewing]');
   newFocusTarget.focus()
   delete newFocusTarget.dataset.viewing
