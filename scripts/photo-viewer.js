@@ -16,21 +16,21 @@ let insertImageIntoPhotoViewScreen = (image) => {
   PHOTOVIEWSCREEN.insertBefore(image, PHOTOVIEWSCREEN.children[0]);
 }
 
+
 // View photo in fullscreen
 let viewPhoto = (e) => {
   let pictureElem = document.createElement('picture');
-  pictureElem.classList.add("picture-view");
   let sourceElem = document.createElement('source');
   sourceElem.type = "image/webp";
   sourceElem.srcset = e.parentElement.firstElementChild.srcset.replace("/previews/", "/hi-res/");
   let imageElem = document.createElement('img');
   imageElem.classList = e.classList;
   imageElem.classList.add("photo-view");
-  imageElem.src = e.src.replace("/previews/", "/hi-res/");
   imageElem.alt = e.alt;
   e.dataset.viewing = ''
   pictureElem.appendChild(sourceElem);
   pictureElem.appendChild(imageElem);
+  imageElem.src = e.src.replace("/previews/", "/hi-res/");
   if (imageElem.complete) {
     PHOTOVIEWSCREEN.classList.remove("o-none");
     insertImageIntoPhotoViewScreen(pictureElem);
@@ -46,6 +46,7 @@ let viewPhoto = (e) => {
   }
 }
 
+
 // Stop viewing photo in fullscreen
 let resetPhotoView = () => {
   PHOTOVIEWSCREEN.classList.add("o-none");
@@ -54,6 +55,7 @@ let resetPhotoView = () => {
   newFocusTarget.focus()
   delete newFocusTarget.dataset.viewing
 }
+
 
 // Event listeners for viewing photos in fullscreen
 for (let i = 0; i < PHOTOS.length; i++) {

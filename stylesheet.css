@@ -448,11 +448,17 @@ div.about-me-item:last-of-type {
   height: 30px;
   color: var(--hg-white);
   border-radius: 100%;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 1s;
   border: 0.3rem solid var(--hg-white);
   border-color: var(--hg-white) transparent var(--hg-white) transparent;
-  animation: imageLoadingSpinner 1s linear 0s infinite normal none;
+  animation-name: imageLoadingSpinner, imageLoadingSpinnerDelay;
+  animation-duration: 1s, var(--hg-anim-dur);
+  animation-timing-function: linear, ease-out;
+  animation-delay: 0s, 0.5s;
+  animation-iteration-count: infinite, 1;
+  animation-direction: normal;
+  animation-fill-mode: none, forwards;
 }
 
 @keyframes imageLoadingSpinner {
@@ -460,29 +466,28 @@ div.about-me-item:last-of-type {
   100% {transform: rotate(360deg);}
 }
 
-.picture-view {
-  max-width: min(1500px, 85%);
-  max-height: min(1500px, 70%);
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
+@keyframes imageLoadingSpinnerDelay {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
 
 .photo-view {
+  box-sizing: border-box;
+  height: auto;
+  max-width: min(1500px, 85%);
+  max-height: min(1500px, 70%);
   padding: min(16px, 2.5%) min(16px, 2.5%) min(50px, 10%) min(16px, 2.5%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: var(--hg-white);
   animation: photoSlideUp var(--hg-anim-dur) ease-out 0s 1 normal forwards;
-  box-sizing: border-box;
-  position: relative;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
 }
 
 @keyframes photoSlideUp {
-  from {top: 30px; opacity: 0;}
-  to {top: 0px; opacity: 1;}
+  from {top: 53%; opacity: 0;}
+  to {top: 50%; opacity: 1;}
 }
 
 .photo-view-screen {
