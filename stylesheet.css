@@ -452,7 +452,7 @@ div.about-me-item:last-of-type {
   transition: opacity 1s;
   border: 0.3rem solid var(--hg-white);
   border-color: var(--hg-white) transparent var(--hg-white) transparent;
-  animation-name: imageLoadingSpinner, imageLoadingSpinnerDelay;
+  animation-name: spin, fadeIn;
   animation-duration: 1s, var(--hg-anim-dur);
   animation-timing-function: linear, ease-out;
   animation-delay: 0s, 0.5s;
@@ -461,12 +461,12 @@ div.about-me-item:last-of-type {
   animation-fill-mode: none, forwards;
 }
 
-@keyframes imageLoadingSpinner {
+@keyframes spin {
   0% {transform: rotate(0deg);}
   100% {transform: rotate(360deg);}
 }
 
-@keyframes imageLoadingSpinnerDelay {
+@keyframes fadeIn {
   0% {opacity: 0;}
   100% {opacity: 1;}
 }
@@ -482,7 +482,9 @@ div.about-me-item:last-of-type {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--hg-white);
-  animation: photoSlideUp var(--hg-anim-dur) ease-out 0s 1 normal forwards;
+  opacity: 0;
+  /* animation delay allows image to paint first */
+  animation: photoSlideUp var(--hg-anim-dur) ease-out 0.1s 1 normal forwards;
 }
 
 @keyframes photoSlideUp {

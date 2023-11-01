@@ -16,7 +16,6 @@ let insertImageIntoPhotoViewScreen = (image) => {
   PHOTOVIEWSCREEN.insertBefore(image, PHOTOVIEWSCREEN.children[0]);
 }
 
-
 // View photo in fullscreen
 let viewPhoto = (e) => {
   let pictureElem = document.createElement('picture');
@@ -32,8 +31,8 @@ let viewPhoto = (e) => {
   pictureElem.appendChild(imageElem);
   imageElem.src = e.src.replace("/previews/", "/hi-res/");
   if (imageElem.complete) {
-    PHOTOVIEWSCREEN.classList.remove("o-none");
     insertImageIntoPhotoViewScreen(pictureElem);
+    PHOTOVIEWSCREEN.classList.remove("o-none");
     PHOTOVIEWSCREEN.focus();
   } else {
     LOADINGSPINNER.classList.remove("d-none", "o-none");
