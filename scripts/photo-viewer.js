@@ -4,7 +4,7 @@
 "use strict";
 
 // Variable declarations
-const PHOTOS = document.querySelectorAll(".photo img");
+const PHOTOS = document.getElementsByClassName("photo");
 const CAROUSEL = document.getElementsByClassName("carousel");
 const CAROUSELL = CAROUSEL.length;
 const PHOTOVIEWSCREEN = document.getElementsByClassName("photo-view-screen")[0];
@@ -19,12 +19,13 @@ let insertImageIntoPhotoViewScreen = (image) => {
 // View photo in fullscreen
 let viewPhoto = (e) => {
   let pictureElem = document.createElement('picture');
-  pictureElem.classList = e.parentElement.classList;
-  pictureElem.classList.add("photo-view");
+  pictureElem.classList.add("picture-view");
   let sourceElem = document.createElement('source');
   sourceElem.type = "image/webp";
   sourceElem.srcset = e.parentElement.firstElementChild.srcset.replace("/previews/", "/hi-res/");
   let imageElem = document.createElement('img');
+  imageElem.classList = e.classList;
+  imageElem.classList.add("photo-view");
   imageElem.src = e.src.replace("/previews/", "/hi-res/");
   imageElem.alt = e.alt;
   e.dataset.viewing = ''
