@@ -27,6 +27,13 @@
   --hg-dark-blue: #1D416C;
   --hg-white: #FFFFFF;
   --hg-off-white: #D9D9D9;
+  --hg-grey: #888888;
+
+  /* for light/dark mode toggle */
+  --hg-default-background: var(--hg-beige);
+  --hg-default-text: var(--hg-dark-green);
+  --hg-toggle-border-color: var(--hg-blue);
+  --hg-work-article-summary-border: var(--hg-dark-green);
   
   --hg-border-radius: 10px;
   
@@ -49,8 +56,8 @@ html, body {
   font-family: var(--hg-font);
   font-size: 1rem;
   line-height: 1.4;
-  color: var(--hg-dark-green);
-  background-color: var(--hg-beige);
+  color: var(--hg-default-text);
+  background-color: var(--hg-default-background);
 }
 
 html {
@@ -81,7 +88,7 @@ a {
 }
 
 a:focus-visible {
-  outline: 0.3rem solid var(--hg-dark-green);
+  outline: 0.3rem solid var(--hg-default-text);
   outline-offset: 0.3em;
 }
 
@@ -136,6 +143,8 @@ img, picture {
 }
 
 .button {
+  position: relative;
+  box-sizing: border-box;
   padding: 14px 1.25rem;
   border-radius: 41px;
   background-color: var(--hg-blue);
@@ -147,6 +156,46 @@ img, picture {
   letter-spacing: 0.02em;
   z-index: 1;
   -webkit-tap-highlight-color: transparent;
+}
+
+.button.toggle {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border: 5px solid var(--hg-toggle-border-color);
+  transition: padding-left var(--hg-anim-dur), padding-right var(--hg-anim-dur);
+}
+
+.button.toggle.red-shadow-pressed {
+  border-color: var(--hg-dark-blue);
+}
+
+.button.toggle-on {
+  padding-right: calc(2.2em + var(--hg-margin)/2);
+}
+
+.button.toggle-off {
+  padding-left: calc(2.2em + var(--hg-margin)/2);
+  background-color: var(--hg-grey);
+}
+
+.button.toggle::after {
+  content: '';
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 35px;
+  background-color: var(--hg-white);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left var(--hg-anim-dur);
+}
+
+.button.toggle-on::after {
+  left: calc(100% - 1.9em - 5px);
+}
+
+.button.toggle-off::after {
+  left: 5px;
 }
 
 .button:focus-visible {
@@ -210,9 +259,30 @@ img, picture {
 }
 
 #home-body footer {
-  padding: var(--hg-margin);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--hg-margin) calc(var(--hg-margin) - 6px) var(--hg-margin) var(--hg-margin);
   font-weight: bold;
   text-align: center;
+}
+
+.attribution {
+  flex-grow: 1;
+  padding-left: 34px;
+}
+
+.color-mode-icon {
+  width: 28px;
+  height: auto;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.moon-icon {
+  display: none;
 }
 
 
@@ -260,7 +330,7 @@ img, picture {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: var(--hg-beige);
+  background-color: var(--hg-default-background);
   opacity: 0.6;
 }
 
@@ -278,7 +348,7 @@ img, picture {
 
 .sub-page-nav .nav-inner-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   max-width: var(--hg-max-content-width);
   position: absolute;
@@ -546,7 +616,7 @@ div.about-me-item:last-of-type {
   text-align: center;
   padding: 10px 0;
   border-radius: var(--hg-border-radius);
-  border: 0.2rem solid var(--hg-dark-green);
+  border: 0.2rem solid var(--hg-work-article-summary-border);
   margin: calc(var(--hg-margin) + 12px) 0 6px 0;
 }
 
@@ -556,7 +626,7 @@ div.about-me-item:last-of-type {
 
 @keyframes workSummaryTap {
   0% {background-color: var(--hg-off-beige);}
-  100% {background-color: var(--hg-beige);}
+  100% {background-color: var(--hg-default-background);}
 }
 
 .work-article-summary-arrow {
@@ -567,6 +637,10 @@ div.about-me-item:last-of-type {
   width: 1rem;
   transform: translateY(-50%) rotate(180deg);
   transition: var(--hg-anim-dur);
+}
+
+.work-article-summary-arrow path {
+  fill: var(--hg-dark-green);
 }
 
 .work-article-info {
@@ -723,12 +797,26 @@ div.about-me-item:last-of-type {
 /*//// Hover Styles ////*/
 
 @media (hover: hover) {
+
   a:hover:not(.button) {
     color: var(--hg-red)
   }
 
+  .color-mode-icon:hover {
+    cursor: pointer;
+  }
+
   .button:hover {
     background-color: var(--hg-dark-blue);
+    cursor: pointer;
+  }
+
+  .button.toggle-on:hover {
+    border-color: var(--hg-dark-blue);
+  }
+
+  .button.toggle-off:hover {
+    border-color: var(--hg-light-red);
   }
   
   .work-article-summary:hover {
@@ -751,5 +839,90 @@ div.about-me-item:last-of-type {
 
   .contact-logo-link:hover .contact-logo path {
     fill: var(--hg-red);
+  }
+}
+
+
+/* Dark Mode Styles */
+
+:root body[data-color-mode=dark] {
+  --hg-light-green: #4d5447;
+  --hg-xdark-green: #32352E;
+  --hg-light-red: #e56956;
+  --hg-dark-red: #A84132;
+
+  --hg-default-background: var(--hg-xdark-green);
+  --hg-default-text: var(--hg-beige);
+  --hg-toggle-border-color: var(--hg-red);
+  --hg-work-article-summary-border: var(--hg-beige);
+}
+
+body[data-color-mode=dark] a {
+  color: var(--hg-white);
+}
+
+body[data-color-mode=dark] .sun-icon {
+  display: none;
+}
+
+body[data-color-mode=dark] .moon-icon {
+  display: initial;
+  max-height: 20px;
+  max-width: 20px;
+  padding: 10px;
+}
+
+.moon-icon path {
+  fill: var(--hg-beige);
+}
+
+body[data-color-mode=dark] .button {
+  background-color: var(--hg-red);
+}
+
+body[data-color-mode=dark] .button-cont::before {
+  background-color: var(--hg-dark-red);
+}
+
+body[data-color-mode=dark] .button.red-shadow-pressed {
+  background-color: var(--hg-dark-red) !important;
+}
+
+body[data-color-mode=dark] .button.toggle.red-shadow-pressed {
+  border-color: var(--hg-dark-red);
+}
+
+body[data-color-mode=dark] .sub-page-nav::after, body[data-color-mode=dark] .article-divider, body[data-color-mode=dark] .work-info-divider {
+  background-color: var(--hg-beige);
+}
+
+body[data-color-mode=dark] .work-article-summary-arrow path {
+  fill: var(--hg-beige);
+}
+
+body[data-color-mode=dark] .work-article-summary {
+  background-color: var(--hg-xdark-green);
+}
+
+body[data-color-mode=dark] .work-article-info, body[data-color-mode=dark] .about-me-item:nth-of-type(even) {
+  background-color: var(--hg-dark-green);
+}
+
+body[data-color-mode=dark] .work-article-summary.red-shadow-pressed {
+  background-color: var(--hg-default-background) !important;
+}
+
+body[data-color-mode=dark] .contact-logo path {
+  fill: var(--hg-white);
+}
+
+@media (hover: hover) {
+
+  body[data-color-mode=dark] .button:hover {
+    background-color: var(--hg-light-red);
+  }
+
+  body[data-color-mode=dark] .work-article-summary:hover {
+    background-color: var(--hg-light-green);
   }
 }

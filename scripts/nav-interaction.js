@@ -1,4 +1,4 @@
-// Script to enable nav interaction
+// Script to enable nav interaction and light/dark (color) mode functionality
 // By Harry Gilbert, 2023
 
 "use strict";

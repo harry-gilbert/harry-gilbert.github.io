@@ -13,7 +13,22 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 </head>
-<body id="contact-body" class="sub-page-body">
+<body id="contact-body" class="sub-page-body" data-color-mode="light">
+  <script>
+    // Check color preference, set body element attribute
+    let chosenColorMode = localStorage.getItem("color-mode");
+
+    let setColorMode = (e) => {
+      document.body.dataset.colorMode = e;
+      localStorage.setItem("color-mode", e);
+    }
+
+    if (chosenColorMode) {
+      setColorMode(chosenColorMode);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setColorMode("dark")
+    }
+  </script>
 
   <header class="sub-page-header">
     <h1 class="sub-page-h1">Contact info</h1>
@@ -54,6 +69,15 @@
       <div class="button-cont">
         <a href="../" class="button">Home</a>
       </div>
+      <svg onclick="setColorMode('dark')" class="color-mode-icon sun-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <title>Current colour mode: Light</title>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.76115 10.1731C4.00734 11.9929 2.57458 13.3259 0.877991 13.9999C2.57457 14.674 4.00733 16.0069 4.76113 17.8267C5.51495 19.6466 5.44434 21.6022 4.72129 23.2785C6.3976 22.5555 8.35325 22.4849 10.1731 23.2387C11.9929 23.9925 13.3259 25.4253 13.9999 27.1219C14.674 25.4253 16.0069 23.9925 17.8268 23.2387C19.6466 22.4849 21.6023 22.5555 23.2786 23.2785C22.5555 21.6022 22.4849 19.6466 23.2387 17.8267C23.9925 16.0069 25.4253 14.674 27.1219 13.9999C25.4253 13.3259 23.9925 11.9929 23.2387 10.1731C22.4849 8.35322 22.5555 6.39759 23.2786 4.72129C21.6023 5.44433 19.6466 5.51492 17.8268 4.76112C16.0069 4.00731 14.674 2.57453 13.9999 0.87793C13.3259 2.57452 11.9929 4.00729 10.1731 4.7611C8.35325 5.5149 6.39761 5.44431 4.7213 4.72127C5.44436 6.39757 5.51495 8.35322 4.76115 10.1731ZM14 21.9999C18.4183 21.9999 22 18.4182 22 13.9999C22 9.58166 18.4183 5.99994 14 5.99994C9.58172 5.99994 6 9.58166 6 13.9999C6 18.4182 9.58172 21.9999 14 21.9999Z" fill="#3D4337"/>
+        <circle cx="14" cy="14" r="6" fill="#3D4337"/>
+      </svg>
+      <svg onclick="setColorMode('light')" class="color-mode-icon moon-icon"  width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <title>Current colour mode: Dark</title>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 17.3118C1.09855 17.7556 2.29907 18 3.55666 18C8.80336 18 13.0567 13.7467 13.0567 8.5C13.0567 4.82257 10.9672 1.63316 7.91064 0.0542578C8.27226 0.0183726 8.63902 0 9.01008 0C15.0852 0 20.0101 4.92487 20.0101 11C20.0101 17.0751 15.0852 22 9.01008 22C5.28348 22 1.9897 20.1469 0 17.3118Z" fill="#3D4337"/>
+      </svg>
     </div>
   </nav>
 
