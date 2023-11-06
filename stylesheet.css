@@ -36,8 +36,6 @@
   --hg-work-article-summary-border: var(--hg-dark-green);
   
   --hg-border-radius: 10px;
-  
-  --hg-focus-outline: 0.3rem solid var(--hg-dark-green);
 
   --hg-margin: 20px;
   --hg-non-scaling-width: 90%;
@@ -87,7 +85,7 @@ a {
   color: var(--hg-blue);
 }
 
-a:focus-visible {
+a:focus-visible, .color-mode-icon:focus-visible {
   outline: 0.3rem solid var(--hg-default-text);
   outline-offset: 0.3em;
 }
@@ -199,7 +197,6 @@ img, picture {
 }
 
 .button:focus-visible {
-  outline: var(--hg-focus-outline);
   background-color: var(--hg-light-blue);
 }
 
@@ -271,14 +268,15 @@ img, picture {
 
 .attribution {
   flex-grow: 1;
-  padding-left: 34px;
+  padding-left: calc(1.75rem + 6px);
 }
 
 .color-mode-icon {
-  width: 28px;
+  width: 1.75rem;
   height: auto;
   padding: 6px;
   flex-shrink: 0;
+  border-radius: 100%;
 }
 
 .moon-icon {
@@ -650,7 +648,7 @@ div.about-me-item:last-of-type {
   background-color: var(--hg-off-beige);
   max-height: 0;
   overflow-y: hidden;
-  transition: var(--hg-anim-dur);
+  transition: width var(--hg-anim-dur), max-height var(--hg-anim-dur);
   transition-timing-function: ease-in-out;
 }
 
@@ -677,7 +675,7 @@ div.about-me-item:last-of-type {
   background-color: var(--hg-dark-green);
   border-radius: 5px;
   z-index: 1;
-  transition: var(--hg-anim-dur);
+  transition: width var(--hg-anim-dur);
   transition-timing-function: ease-in-out;
 }
 
@@ -845,10 +843,11 @@ div.about-me-item:last-of-type {
 
 /* Dark Mode Styles */
 
-:root body[data-color-mode=dark] {
+html[data-color-mode=dark] {
   --hg-light-green: #4d5447;
-  --hg-xdark-green: #32352E;
-  --hg-light-red: #e56956;
+  --hg-xdark-green: #2b2e28;
+  --hg-light-red: #d65443;
+  --hg-red: #c74f3e;
   --hg-dark-red: #A84132;
 
   --hg-default-background: var(--hg-xdark-green);
@@ -857,18 +856,26 @@ div.about-me-item:last-of-type {
   --hg-work-article-summary-border: var(--hg-beige);
 }
 
-body[data-color-mode=dark] a {
+html[data-color-mode=dark] a {
   color: var(--hg-white);
 }
 
-body[data-color-mode=dark] .sun-icon {
+html[data-color-mode=dark] #home-body footer {
+  padding-right: calc(var(--hg-margin) - 10px);
+}
+
+html[data-color-mode=dark] .attribution {
+  padding-left: calc(1.25rem + 10px);
+}
+
+html[data-color-mode=dark] .sun-icon {
   display: none;
 }
 
-body[data-color-mode=dark] .moon-icon {
+html[data-color-mode=dark] .moon-icon {
   display: initial;
-  max-height: 20px;
-  max-width: 20px;
+  max-height: 1.25rem;
+  max-width: 1.25rem;
   padding: 10px;
 }
 
@@ -876,53 +883,61 @@ body[data-color-mode=dark] .moon-icon {
   fill: var(--hg-beige);
 }
 
-body[data-color-mode=dark] .button {
+html[data-color-mode=dark] .button {
   background-color: var(--hg-red);
 }
 
-body[data-color-mode=dark] .button-cont::before {
+html[data-color-mode=dark] .button-cont::before {
   background-color: var(--hg-dark-red);
 }
 
-body[data-color-mode=dark] .button.red-shadow-pressed {
+html[data-color-mode=dark] .button.red-shadow-pressed {
   background-color: var(--hg-dark-red) !important;
 }
 
-body[data-color-mode=dark] .button.toggle.red-shadow-pressed {
+html[data-color-mode=dark] .button:focus-visible {
+  background-color: var(--hg-light-red);
+}
+
+html[data-color-mode=dark] .button.toggle.red-shadow-pressed {
   border-color: var(--hg-dark-red);
 }
 
-body[data-color-mode=dark] .sub-page-nav::after, body[data-color-mode=dark] .article-divider, body[data-color-mode=dark] .work-info-divider {
+html[data-color-mode=dark] .sub-page-nav::after, html[data-color-mode=dark] .article-divider, html[data-color-mode=dark] .work-info-divider {
   background-color: var(--hg-beige);
 }
 
-body[data-color-mode=dark] .work-article-summary-arrow path {
+html[data-color-mode=dark] .work-article-summary-arrow path {
   fill: var(--hg-beige);
 }
 
-body[data-color-mode=dark] .work-article-summary {
+html[data-color-mode=dark] .work-article-summary {
   background-color: var(--hg-xdark-green);
 }
 
-body[data-color-mode=dark] .work-article-info, body[data-color-mode=dark] .about-me-item:nth-of-type(even) {
+html[data-color-mode=dark] .work-article:focus-visible > .work-article-summary {
   background-color: var(--hg-dark-green);
 }
 
-body[data-color-mode=dark] .work-article-summary.red-shadow-pressed {
+html[data-color-mode=dark] .work-article-info, html[data-color-mode=dark] .about-me-item:nth-of-type(even) {
+  background-color: var(--hg-dark-green);
+}
+
+html[data-color-mode=dark] .work-article-summary.red-shadow-pressed {
   background-color: var(--hg-default-background) !important;
 }
 
-body[data-color-mode=dark] .contact-logo path {
+html[data-color-mode=dark] .contact-logo path {
   fill: var(--hg-white);
 }
 
 @media (hover: hover) {
 
-  body[data-color-mode=dark] .button:hover {
+  html[data-color-mode=dark] .button:hover {
     background-color: var(--hg-light-red);
   }
 
-  body[data-color-mode=dark] .work-article-summary:hover {
+  html[data-color-mode=dark] .work-article-summary:hover {
     background-color: var(--hg-light-green);
   }
 }

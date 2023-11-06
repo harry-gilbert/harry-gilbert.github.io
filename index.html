@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-color-mode="light">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,13 +13,14 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 </head>
-<body id="home-body" data-color-mode="light">
+<body id="home-body">
   <script>
     // Check color preference, set body element attribute
     let chosenColorMode = localStorage.getItem("color-mode");
 
     let setColorMode = (e) => {
-      document.body.dataset.colorMode = e;
+      document.documentElement.dataset.colorMode = e;
+      // I'm treating the 'color-mode' localStorage item as strictly necessary for the accessible operation of this website and therefore not requesting consent from the user to store it.
       localStorage.setItem("color-mode", e);
     }
 
@@ -71,6 +72,23 @@
     </svg>
   </footer>
 
+  <script>
+    const DARKMODETOGGLE = document.getElementsByClassName("sun-icon")[0];
+    const LIGHTMODETOGGLE = document.getElementsByClassName("moon-icon")[0];
+
+    DARKMODETOGGLE.addEventListener("keydown", function(evt) {
+      if (evt.code == "Enter") {
+        setColorMode('dark');
+        LIGHTMODETOGGLE.focus();
+      }
+    });
+    LIGHTMODETOGGLE.addEventListener("keydown", function(evt) {
+      if (evt.code == "Enter") {
+        setColorMode('light');
+        DARKMODETOGGLE.focus();
+      }
+    });
+  </script>
   <script src="scripts/nav-interaction.js"></script>
 </body>
 </html>
