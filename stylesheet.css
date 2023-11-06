@@ -261,6 +261,7 @@ img, picture {
   align-items: center;
   box-sizing: border-box;
   width: 100%;
+  max-width: var(--hg-max-content-width);
   padding: var(--hg-margin) calc(var(--hg-margin) - 6px) var(--hg-margin) var(--hg-margin);
   font-weight: bold;
   text-align: center;
@@ -272,14 +273,25 @@ img, picture {
 }
 
 .color-mode-icon {
-  width: 1.75rem;
-  height: auto;
   padding: 6px;
   flex-shrink: 0;
   border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -1px;
+  border: none;
+  background-color: transparent;
 }
 
-.moon-icon {
+.sun-icon {
+  width: 1.75rem;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.moon-button {
   display: none;
 }
 
@@ -604,6 +616,8 @@ div.about-me-item:last-of-type {
 
 .work-article:focus-visible > .work-article-summary {
   background-color: var(--hg-off-beige);
+  outline: 0.3rem solid var(--hg-default-text);
+  outline-offset: 0.3em;
 }
 
 .work-article-summary {
@@ -816,6 +830,10 @@ div.about-me-item:last-of-type {
   .button.toggle-off:hover {
     border-color: var(--hg-light-red);
   }
+
+  .color-mode-icon:hover path, .color-mode-icon:hover circle {
+    fill: var(--hg-red)
+  }
   
   .work-article-summary:hover {
     background-color: var(--hg-off-beige);
@@ -868,15 +886,19 @@ html[data-color-mode=dark] .attribution {
   padding-left: calc(1.25rem + 10px);
 }
 
-html[data-color-mode=dark] .sun-icon {
+html[data-color-mode=dark] .sun-button {
   display: none;
 }
 
-html[data-color-mode=dark] .moon-icon {
-  display: initial;
-  max-height: 1.25rem;
-  max-width: 1.25rem;
+html[data-color-mode=dark] .moon-button {
+  display: flex;
   padding: 10px;
+}
+
+html[data-color-mode=dark] .moon-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  flex-shrink: 0;
 }
 
 .moon-icon path {
@@ -935,6 +957,10 @@ html[data-color-mode=dark] .contact-logo path {
 
   html[data-color-mode=dark] .button:hover {
     background-color: var(--hg-light-red);
+  }
+  
+  html[data-color-mode=dark] .color-mode-icon:hover path, html[data-color-mode=dark] .color-mode-icon:hover circle {
+    fill: var(--hg-light-red)
   }
 
   html[data-color-mode=dark] .work-article-summary:hover {
