@@ -716,7 +716,7 @@ div.about-me-item:last-of-type {
 
 /*//// Contact page ////*/
 
-#contact-body {
+#contact-body, #page-not-found-body {
   display: flex;
   flex-flow: column nowrap;
 }
@@ -725,7 +725,11 @@ div.about-me-item:last-of-type {
   margin: 0 0 40px 0;
 }
 
-#contact-body .sub-page-content-container {
+#page-not-found-body h2 {
+  margin: 0 0 2rem 0;
+}
+
+#contact-body .sub-page-content-container, #page-not-found-body  .sub-page-content-container {
   text-align: center;
   font-weight: bold;
   flex-grow: 1;
