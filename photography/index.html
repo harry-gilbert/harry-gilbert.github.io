@@ -18,14 +18,10 @@
     // Check color preference, set body element attribute
     let chosenColorMode = localStorage.getItem("color-mode");
 
-    let setColorMode = (e, caller) => {
+    let setColorMode = (e) => {
       document.documentElement.dataset.colorMode = e;
       // I'm treating the 'color-mode' localStorage item as strictly necessary for the accessible operation of this website and therefore not requesting consent from the user to store it.
       localStorage.setItem("color-mode", e);
-
-      if (caller) {
-        focusNewColorModeButton(caller);
-      }
     }
 
     if (chosenColorMode) {
