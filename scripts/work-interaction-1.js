@@ -7,6 +7,7 @@
 const WORKARTICLES = document.getElementsByClassName("work-article");
 const WORKARTICLESL = WORKARTICLES.length;
 const ARTICLESUMMARIES = document.getElementsByClassName("work-article-summary");
+const ARTICLESUMMARIESL = ARTICLESUMMARIES.length;
 const NAV = document.getElementsByClassName("sub-page-nav")[0];
 const HGMARGIN = getComputedStyle(document.documentElement).getPropertyValue('--hg-margin').replace("px","");
 const ANIMDUR = getComputedStyle(document.documentElement).getPropertyValue('--hg-anim-dur').replace("s","") * 1000;
@@ -92,35 +93,35 @@ let toggleWorkInfo = (element) => {
 
 
 // EVENT LISTENERS
-for (let i = 0; i < WORKARTICLESL; i++) {
+for (let i = 0; i < ARTICLESUMMARIESL; i++) {
 
   // Trigger article show/hide transitions
-  WORKARTICLES[i].addEventListener("click", function(evt) {
-    toggleWorkInfo(this);
+  ARTICLESUMMARIES[i].addEventListener("click", function(evt) {
+    toggleWorkInfo(this.parentElement);
   });
-  WORKARTICLES[i].addEventListener("keydown", function(evt) {
+  ARTICLESUMMARIES[i].addEventListener("keydown", function(evt) {
     if (evt.code == "Enter") {
-      toggleWorkInfo(this);
+      toggleWorkInfo(this.parentElement);
     }
   });
   ["mousedown","touchstart"].forEach( evt => {
-    WORKARTICLES[i].addEventListener(evt, function() {
-      pressIntoRedShadow(ARTICLESUMMARIES[i]);
+    ARTICLESUMMARIES[i].addEventListener(evt, function() {
+      pressIntoRedShadow(this);
     }, {passive: true});
   });
-  WORKARTICLES[i].addEventListener("keydown", function(evt) {
+  ARTICLESUMMARIES[i].addEventListener("keydown", function(evt) {
     if (evt.code == "Enter") {
-      pressIntoRedShadow(ARTICLESUMMARIES[i]);
+      pressIntoRedShadow(this);
     }
   });
   ["mouseup","mouseout","touchend","touchcancel"].forEach( evt => {
-    WORKARTICLES[i].addEventListener(evt, function() {
-      unpressOutOfRedShadow(ARTICLESUMMARIES[i]);
+    ARTICLESUMMARIES[i].addEventListener(evt, function() {
+      unpressOutOfRedShadow(this);
     });
   });
-  WORKARTICLES[i].addEventListener("keyup", function(evt) {
+  ARTICLESUMMARIES[i].addEventListener("keyup", function(evt) {
     if (evt.code == "Enter") {
-      unpressOutOfRedShadow(ARTICLESUMMARIES[i]);
+      unpressOutOfRedShadow(this);
     }
   });
 }
